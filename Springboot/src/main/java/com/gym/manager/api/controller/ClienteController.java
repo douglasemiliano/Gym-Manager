@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gym.manager.domain.model.Cliente;
+import com.gym.manager.domain.model.Medidas;
 import com.gym.manager.domain.service.ClienteService;
+import com.gym.manager.domain.service.MedidasService;
 
 @RestController
 @RequestMapping("/clientes")
@@ -28,6 +30,9 @@ public class ClienteController {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private MedidasService medidasService;
 	
 	
 	@PostMapping
@@ -91,6 +96,15 @@ public class ClienteController {
 		this.clienteService.deletar(id);;
 		
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/{id}/imc")
+	public Float CalcularImc(@PathVariable Long id) {
+		Optional<Medidas> medidasCliente = this.medidasService.buscar(id);
+		System.out.println(this.medidasService.calcularImc(medidasCliente.get().getAltura(), medidasCliente.get().getPeso()));
+		return this.medidasService.calcularImc(medidasCliente.get().getAltura(), medidasCliente.get().getPeso());
+		
+	
 	}
 
 }
