@@ -1,5 +1,5 @@
 # GymMaster
-Sistema de gerenciamento de academias, ou quase.
+Sistema de gerenciamento de academias, ou quase isso.
 
 #Backend
 - Spring
