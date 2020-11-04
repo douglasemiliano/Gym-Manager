@@ -29,7 +29,6 @@ public class Cliente {
 	private String cpf;
 	
 	@NotNull
-	@Max(value = 99)
 	private Integer idade;
 	
 	@NotBlank
@@ -63,10 +62,10 @@ public class Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public int getIdade() {
+	public Integer getIdade() {
 		return idade;
 	}
-	public void setIdade(int idade) {
+	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
 	public String getEmail() {
